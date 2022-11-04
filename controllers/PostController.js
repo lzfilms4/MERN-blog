@@ -1,6 +1,6 @@
 const PostModel = require('../models/Post.js');
 
-export const getLastTags = async (req, res) => {
+const getLastTags = async (req, res) => {
   try {
     const posts = await PostModel.find().limit(5).exec();
 
@@ -18,7 +18,7 @@ export const getLastTags = async (req, res) => {
   }
 };
 
-export const getAll = async (req, res) => {
+const getAll = async (req, res) => {
   try {
     const posts = await PostModel.find().populate('user').exec();
     res.json(posts);
@@ -30,7 +30,7 @@ export const getAll = async (req, res) => {
   }
 };
 
-export const getOne = async (req, res) => {
+const getOne = async (req, res) => {
   try {
     const postId = req.params.id;
 
@@ -69,7 +69,7 @@ export const getOne = async (req, res) => {
   }
 };
 
-export const remove = async (req, res) => {
+const remove = async (req, res) => {
   try {
     const postId = req.params.id;
 
@@ -104,7 +104,7 @@ export const remove = async (req, res) => {
   }
 };
 
-export const create = async (req, res) => {
+const create = async (req, res) => {
   try {
     const doc = new PostModel({
       title: req.body.title,
@@ -125,7 +125,7 @@ export const create = async (req, res) => {
   }
 };
 
-export const update = async (req, res) => {
+const update = async (req, res) => {
   try {
     const postId = req.params.id;
 
@@ -151,4 +151,13 @@ export const update = async (req, res) => {
       message: 'Не удалось обновить статью',
     });
   }
+};
+
+module.exports = {
+  getLastTags,
+  getAll,
+  getOne,
+  remove,
+  create,
+  update,
 };

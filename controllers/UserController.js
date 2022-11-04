@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const UserModel = require('../models/User.js');
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
   try {
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
@@ -42,7 +42,7 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   try {
     const user = await UserModel.findOne({ email: req.body.email });
 
@@ -84,7 +84,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const getMe = async (req, res) => {
+const getMe = async (req, res) => {
   try {
     const user = await UserModel.findById(req.userId);
 
@@ -103,4 +103,9 @@ export const getMe = async (req, res) => {
       message: 'Нет доступа',
     });
   }
+};
+module.exports = {
+  register,
+  login,
+  getMe,
 };

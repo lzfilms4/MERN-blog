@@ -9,9 +9,11 @@ const mongoose = require('mongoose');
 
 const { registerValidation, loginValidation, postCreateValidation } = require('./validations.js');
 
-const { handleValidationErrors, checkAuth } = require('./utils/index.js');
+const handleValidationErrors = require('./utils/handleValidationErrors.js');
+const checkAuth = require('./utils/checkAuth.js');
 
-const { UserController, PostController } = require('./controllers/index.js');
+const UserController = require('./controllers/UserController.js');
+const PostController = require('./controllers/PostController.js');
 
 mongoose
   .connect(process.env.MONGODB_URI)
