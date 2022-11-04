@@ -3,7 +3,7 @@ import fs from 'fs';
 import multer from 'multer';
 import cors from 'cors';
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT;
 
 import mongoose from 'mongoose';
 
