@@ -3,6 +3,8 @@ import fs from 'fs';
 import multer from 'multer';
 import cors from 'cors';
 
+const PORT = process.env.PORT || 80;
+
 import mongoose from 'mongoose';
 
 import { registerValidation, loginValidation, postCreateValidation } from './validations.js';
@@ -63,10 +65,6 @@ app.patch(
   PostController.update,
 );
 
-app.listen(process.env.PORT || 4444, (err) => {
-  if (err) {
-    return console.log(err);
-  }
-
+app.listen(PORT, () => {
   console.log('Server OK');
 });
