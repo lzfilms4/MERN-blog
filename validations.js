@@ -1,4 +1,4 @@
-import { body } from 'express-validator';
+const { body } = require('express-validator');
 
 export const loginValidation = [
   body('email', 'Неверный формат почты').isEmail(),

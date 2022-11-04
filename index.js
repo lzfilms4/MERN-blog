@@ -1,17 +1,17 @@
-import express from 'express';
-import fs from 'fs';
-import multer from 'multer';
-import cors from 'cors';
+const express = require('express');
+const fs = require('fs');
+const multer = require('multer');
+const cors = require('cors');
 
 const PORT = process.env.PORT;
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import { registerValidation, loginValidation, postCreateValidation } from './validations.js';
+const { registerValidation, loginValidation, postCreateValidation } = require('./validations.js');
 
-import { handleValidationErrors, checkAuth } from './utils/index.js';
+const { handleValidationErrors, checkAuth } = require('./utils/index.js');
 
-import { UserController, PostController } from './controllers/index.js';
+const { UserController, PostController } = require('./controllers/index.js');
 
 mongoose
   .connect(process.env.MONGODB_URI)
